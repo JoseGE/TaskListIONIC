@@ -1,2 +1,2 @@
-# TaskListIONIC
-Task list with IONIC
+# Wish List IONIC
+
