@@ -1,0 +1,47 @@
+<ion-header>
+
+    <ion-navbar color="danger">
+        <ion-title> {{nameList | cPlaceholder:"Nueva lista"}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-header>
+            <ion-item>
+                <ion-label floating>Lista</ion-label>
+                <ion-input type="text" [(ngModel)]="nameList" name="nameList"></ion-input>
+            </ion-item>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label floating>item:</ion-label>
+                <ion-input type="text" (keyup.enter)="addItem()" [(ngModel)]="nameItem" name="nameItem"></ion-input>
+            </ion-item>
+            <button ion-button block (click)="addItem()">Agregar</button>
+        </ion-card-content>
+    </ion-card>
+    <!-- items -->
+    <ion-card *ngIf="items.length > 0">
+        <ion-card-header>
+            <h3>Items agregados {{items.length}}</h3>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item *ngFor="let item of items; let i = index">
+                    <button ion-button color="dark" clear> {{item.nombre}}</button>
+                    <button ion-button outline item-right color="danger" (click)="deleteItem(i)">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+    <button (click)="saveList()" ion-button block icon-left color="secondary">
+      <ion-icon name="add"></ion-icon>
+      Agregar Lista
+    </button>
+</ion-content>
